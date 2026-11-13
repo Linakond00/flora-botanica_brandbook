@@ -1,5 +1,6 @@
 // app.js — тема и маршрутизация. Каждый раздел — модуль sections/*.js с mount(root) → функция очистки.
 import { subscribe, resetState, getPalette, getFont, readableOn } from './state.js';
+import './petals.js';
 
 const ROUTES = {
   brief: () => import('./sections/brief.js'),
