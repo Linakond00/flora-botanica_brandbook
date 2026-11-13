@@ -1,0 +1,143 @@
+/* color.css — стили раздела «Цвет» (Лиза). Цвета только через var(--...), чтобы палитра работала. */
+.color {
+  display: grid;
+  gap: 40px;
+}
+
+.color .lead {
+  max-width: 65ch;
+}
+
+.color .lead h1 {
+  margin-bottom: 8px;
+}
+
+.color__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Карточка палитры */
+.palette {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  text-align: left;
+  background: var(--bg);
+  color: var(--text);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: border-color .15s, transform .12s;
+}
+
+.palette:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.palette:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* Выбранная — двойная рамка + галочка */
+.palette.is-active {
+  border-color: var(--accent);
+  border-width: 2.5px;
+}
+
+.palette__swatches {
+  display: flex;
+  gap: 0;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.palette .swatch {
+  flex: 1;
+  display: block;
+}
+
+.palette__name {
+  font: 500 18px/1.3 var(--font-head);
+}
+
+.palette__codes {
+  color: color-mix(in srgb, var(--text) 65%, transparent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+}
+
+.palette__check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.palette.is-active .palette__check {
+  opacity: 1;
+}
+
+/* Образец — использует переменные, поэтому перекрашивается вместе с сайтом */
+.sample {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sample h2 {
+  margin-bottom: 12px;
+}
+
+.sample__text {
+  max-width: 60ch;
+  margin: 0 0 20px;
+}
+
+.sample__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sample__accent {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .color__grid {
+    grid-template-columns: 1fr;
+  }
+  .sample {
+    padding: 20px;
+  }
+}
